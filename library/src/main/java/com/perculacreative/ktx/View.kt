@@ -1,8 +1,8 @@
 package com.perculacreative.ktx
 
 import android.app.Activity
-import android.support.annotation.IdRes
 import android.view.View
+import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 
 fun <T : View> Activity.bind(@IdRes idRes: Int): Lazy<T> {
