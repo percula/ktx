@@ -14,6 +14,14 @@ fun <T> MutableCollection<T>.addOrRemove(item: T): Boolean {
     }
 }
 
+/**
+ * Returns true if an element matching the given [predicate] was found.
+ */
+inline fun <T> Iterable<T>.contains(predicate: (T) -> Boolean): Boolean {
+    for (element in this) if (predicate(element)) return true
+    return false
+}
+
 fun <T> MutableCollection<T>.replaceWith(collection: Collection<T>) {
     if (collection === this) return
     clear()
