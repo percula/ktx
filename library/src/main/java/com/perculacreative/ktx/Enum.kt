@@ -1,9 +1,12 @@
 package com.perculacreative.ktx
 
-inline fun <reified T : Enum<T>> Enum<T>.safeValueOf(name: String): T? {
+/**
+ * Returns an enum entry with specified name.
+ */
+inline fun <reified T : Enum<T>> enumSafeValueOf(name: String): T? {
     return try {
         enumValueOf<T>(name)
-    } catch (e: IllegalArgumentException) {
+    } catch (e: Exception) {
         null
     }
 }
