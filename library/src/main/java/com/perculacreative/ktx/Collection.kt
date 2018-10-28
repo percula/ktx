@@ -28,6 +28,19 @@ fun <T> MutableCollection<T>.replaceWith(collection: Collection<T>) {
     addAll(collection)
 }
 
+/**
+ * Replaces the first item within the list that matches the given predicate or adds the item to
+ * the list if none match.
+ */
+fun <T> MutableList<T>.addOrReplace(item: T, predicate: (T) -> Boolean): Boolean {
+    return this.indexOfFirst { predicate.invoke(it) }
+            .takeIf { it >= 0 }
+            ?.let { this[it] = item }
+            ?.let { true }
+    ?: this.add(item)
+            .let { false }
+}
+
 fun <S: MutableList<T>, T> S.addAnd(index: Int, item: T): S {
     add(index, item)
     return this
