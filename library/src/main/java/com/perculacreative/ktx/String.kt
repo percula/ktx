@@ -1,7 +1,7 @@
 package com.perculacreative.ktx
 
 fun String.removeSymbols(replacement: String = "�"): String {
-    return this.replace(Regex("[^\\p{ASCII}]"), replacement)
+    return this.replace(Regex("[^\\p{ASCII}‘’]"), replacement)
 }
 
 fun String.containsAny(vararg strings: String): Boolean {

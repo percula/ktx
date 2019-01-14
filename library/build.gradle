@@ -26,4 +26,6 @@ dependencies {
     implementation 'androidx.collection:collection-ktx:1.0.0'
     implementation 'androidx.fragment:fragment-ktx:1.0.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    testImplementation 'junit:junit:4.12'
 }
