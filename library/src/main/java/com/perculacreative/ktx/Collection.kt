@@ -1,5 +1,9 @@
 package com.perculacreative.ktx
 
+import android.databinding.ObservableArrayList
+import android.databinding.ObservableList
+import com.perculacreative.ktx.listlivedata.MyObservableArrayList
+
 /**
  * Adds the item if it is not in the collection or removes it if it is.
  * @return Whether this collection contains the item, AFTER this operation
@@ -58,3 +62,9 @@ fun <T> MutableCollection<T>.addAll(vararg items: T) {
 fun <T> Collection<T>?.isNullOrEmpty(): Boolean {
     return (this == null || this.isEmpty())
 }
+
+fun <T> Collection<T>.toObservableArrayList(): ObservableArrayList<T> =
+        MyObservableArrayList<T>().apply { replaceWith(this@toObservableArrayList) }
+
+fun <T> Collection<T>.toObservableList(): ObservableList<T> =
+        MyObservableArrayList<T>().apply { replaceWith(this@toObservableList) }
