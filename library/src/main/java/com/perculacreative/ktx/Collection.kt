@@ -1,7 +1,7 @@
 package com.perculacreative.ktx
 
-import android.databinding.ObservableArrayList
-import android.databinding.ObservableList
+import androidx.databinding.ObservableArrayList
+import androidx.databinding.ObservableList
 import com.perculacreative.ktx.listlivedata.MyObservableArrayList
 
 /**

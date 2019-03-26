@@ -1,6 +1,6 @@
 package com.perculacreative.ktx.listlivedata
 
-import android.databinding.ObservableList
+import androidx.databinding.ObservableList
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

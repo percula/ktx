@@ -1,6 +1,6 @@
 package com.perculacreative.ktx.listlivedata
 
-import android.databinding.ObservableArrayList
+import androidx.databinding.ObservableArrayList
 
 // TODO: Remove once https://issuetracker.google.com/issues/113075721 is fixed
 class MyObservableArrayList<T>: ObservableArrayList<T>() {
