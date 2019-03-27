@@ -67,15 +67,18 @@ val recyclerView by bind<RecyclerView>(R.id.recycler_view)
 
 ## How to use
 
-1) Add the Jitpack repository to your project:
+1) Add the Jitpack repository to your project build.gradle:
 ```groovy
-          repositories {
-              maven { url "https://jitpack.io" }
-          }
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
 ```
-2) Add a dependency on the library:
+2) Add a dependency on the library in your app build.gradle:
 ```groovy
-          implementation 'com.github.percula:ktx:LATEST-VERSION'
+dependencies {
+    implementation 'com.github.percula:ktx:LATEST-VERSION'
+}
 ```
 
 [jitpack-svg]: https://jitpack.io/v/percula/ktx.svg
