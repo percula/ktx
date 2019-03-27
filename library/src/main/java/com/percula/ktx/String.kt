@@ -1,4 +1,4 @@
-package com.perculacreative.ktx
+package com.percula.ktx
 
 fun String.removeSymbols(replacement: String = "�"): String {
     return this.replace(Regex("[^\\p{ASCII}‘’]"), replacement)

@@ -1,4 +1,4 @@
-package com.perculacreative.ktx
+package com.percula.ktx
 
 import org.junit.Test
 

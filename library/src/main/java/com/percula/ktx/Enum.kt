@@ -1,4 +1,4 @@
-package com.perculacreative.ktx
+package com.percula.ktx
 
 /**
  * Returns an enum entry with specified name.

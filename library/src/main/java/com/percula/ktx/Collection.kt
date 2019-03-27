@@ -1,8 +1,8 @@
-package com.perculacreative.ktx
+package com.percula.ktx
 
 import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableList
-import com.perculacreative.ktx.listlivedata.MyObservableArrayList
+import com.percula.ktx.listlivedata.MyObservableArrayList
 
 /**
  * Adds the item if it is not in the collection or removes it if it is.

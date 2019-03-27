@@ -1,7 +1,6 @@
-package com.perculacreative.ktx
+package com.percula.ktx
 
 import android.content.res.Resources
-import android.graphics.Color
 import android.os.Build
 import androidx.annotation.ColorRes
 
