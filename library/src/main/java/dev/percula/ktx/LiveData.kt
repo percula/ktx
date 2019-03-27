@@ -1,4 +1,4 @@
-package com.percula.ktx
+package dev.percula.ktx
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations

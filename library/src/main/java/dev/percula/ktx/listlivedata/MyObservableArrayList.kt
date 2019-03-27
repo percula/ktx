@@ -1,4 +1,4 @@
-package com.percula.ktx.listlivedata
+package dev.percula.ktx.listlivedata
 
 import androidx.databinding.ObservableArrayList
 

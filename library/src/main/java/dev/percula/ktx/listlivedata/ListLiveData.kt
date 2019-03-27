@@ -1,10 +1,10 @@
-package com.percula.ktx.listlivedata
+package dev.percula.ktx.listlivedata
 
 import androidx.databinding.ObservableList
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import com.percula.ktx.toObservableList
+import dev.percula.ktx.toObservableList
 
 /**
  * A [LiveData] that notifies observers each time it's list is updated

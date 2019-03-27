@@ -1,4 +1,4 @@
-package com.percula.ktx
+package dev.percula.ktx
 
 fun <K, V> Map<K, V?>.filterNotNullValues(): Map<K, V> {
     return mapNotNull { (key, nullableValue) ->

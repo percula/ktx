@@ -1,4 +1,4 @@
-package com.percula.ktx
+package dev.percula.ktx
 
 import android.app.Activity
 import android.view.View
