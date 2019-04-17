@@ -24,7 +24,7 @@ fun String.trimTo(length: Int): String {
     }
 }
 
-fun List<String>.containsCaseInsensitive(string: String): Boolean {
+fun Collection<String>.containsCaseInsensitive(string: String): Boolean {
     forEach {
         if (it.equals(string, true)) {
             return true
@@ -33,7 +33,7 @@ fun List<String>.containsCaseInsensitive(string: String): Boolean {
     return false
 }
 
-fun List<String>.indexCaseInsensitive(string: String): Int {
+fun Collection<String>.indexCaseInsensitive(string: String): Int {
     forEachIndexed { index, s ->
         if (s.equals(string, true)) {
             return index
