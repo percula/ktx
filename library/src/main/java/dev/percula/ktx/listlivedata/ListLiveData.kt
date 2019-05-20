@@ -61,10 +61,6 @@ interface ListableLiveData<T> {
     fun observe(owner: LifecycleOwner, observer: Observer<in ObservableList<T>?>)
 }
 
-interface MutableListableLiveData<T> : ListableLiveData<T> {
-    fun setValue(value: ObservableList<T>?)
-}
-
 fun <T> listLiveDataOf(vararg items: T): ListLiveData<T> {
     return ListLiveData(initialValue = items.toList())
 }
