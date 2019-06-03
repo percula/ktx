@@ -7,18 +7,18 @@ Kotlin extension functions that complement Google's ktx library.
 
 ## Features
 
-### onMain{}, onDefault{}, and onIO{}
+### Coroutine Context Helpers
 Switch between coroutine contexts easily:
 
 Before:
 ```kotlin
-withContext(Dispatchers.Default) { databaseQueryFunction() }
+withContext(Dispatchers.IO) { databaseQueryFunction() }
 	.let { withContext(Dispatchers.Main) { liveData.value = it } }
 ```
 
 With ktx:
 ```kotlin
-onDefault{ databaseQueryFunction() }.onMain { liveData.value = it }
+onIO{ databaseQueryFunction() }.onMain { liveData.value = it }
 ```
 
 ### ListLiveData 
