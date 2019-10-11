@@ -1,6 +1,7 @@
 package dev.percula.ktx
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 
 @Deprecated(
@@ -16,3 +17,8 @@ fun <X, Y> LiveData<X>.map(mapFunction: (value: X?) -> Y?) =
         )
 fun <X, Y> LiveData<X>.switchMap(mapFunction: (value: X?) -> LiveData<Y>): LiveData<Y> =
         Transformations.switchMap(this, mapFunction)
+
+fun <T> MutableLiveData<T>.notifyObservers(): MutableLiveData<T> {
+        value = value
+        return this
+}

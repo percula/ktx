@@ -18,4 +18,9 @@ open class NonNullLiveData<T>(private val initialValue: T): LiveData<T>() {
         return super.getValue() ?: initialValue
     }
 
+    fun notifyObservers(): NonNullLiveData<T> {
+        value = value
+        return this
+    }
+
 }
