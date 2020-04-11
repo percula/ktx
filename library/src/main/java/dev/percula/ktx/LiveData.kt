@@ -3,6 +3,7 @@ package dev.percula.ktx
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import kotlinx.coroutines.*
 
 fun <T> MutableLiveData<T>.notifyObservers(): MutableLiveData<T> {
@@ -47,6 +48,50 @@ inline fun <X, Y> LiveData<X>.mapWithUpdateAction(scope: CoroutineScope = Global
                         job = scope.launch {
                                 withContext(Dispatchers.Default) { delay(updateDelayTimeMS) }
                                 onUpdate(this@mapWithUpdateAction.value, value)
+                        }
+                }
+        }
+}
+
+/**
+ * Switch maps the value from the source [LiveData] using the [transform] function into a [MutableLiveData].
+ * When the value is set (by two-way data binding, for example), [onUpdate] is called.
+ *
+ * This is particularly useful for two-way Android DataBinding with text fields. When the [EditText]
+ * sets the value, after an optional delay of [updateDelayTimeMS], [onUpdate] could update the
+ * object on the network. Or the value within the source [LiveData] could be updated.
+ */
+inline fun <X, Y> LiveData<X>.switchMapWithUpdateAction(scope: CoroutineScope = GlobalScope,
+                                                  updateDelayTimeMS: Long = 0L,
+                                                  crossinline transform: (X) -> LiveData<Y>,
+                                                  crossinline onUpdate: (X?, Y) -> Unit): MediatorLiveData<Y> {
+        return object : MediatorLiveData<Y>() {
+                var job: Job? = null
+
+                private var source: LiveData<Y>? = null
+
+                init {
+                        addSource(this@switchMapWithUpdateAction) {
+                                val newLiveData = transform(it)
+                                if (source == newLiveData) return@addSource
+                                source?.let { removeSource(it) }
+                                source = newLiveData
+                                source?.let {
+                                        addSource(it, Observer {
+                                                setValue(it)
+                                        })
+                                }
+                        }
+                }
+
+                override fun setValue(value: Y) {
+                        if (value?.equals(this.value) == true) return
+                        super.setValue(value)
+
+                        job?.cancel()
+                        job = scope.launch {
+                                withContext(Dispatchers.Default) { delay(updateDelayTimeMS) }
+                                onUpdate(this@switchMapWithUpdateAction.value, value)
                         }
                 }
         }
