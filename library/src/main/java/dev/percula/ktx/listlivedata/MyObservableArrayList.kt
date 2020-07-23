@@ -11,4 +11,8 @@ class MyObservableArrayList<T>: ObservableArrayList<T>() {
         return success
     }
 
+    fun removeAllDoNotNotify(elements: Collection<T>): Boolean {
+        return super.removeAll(elements)
+    }
+
 }

@@ -28,7 +28,11 @@ inline fun <T> Iterable<T>.contains(predicate: (T) -> Boolean): Boolean {
 
 fun <T> MutableCollection<T>.replaceWith(collection: Collection<T>) {
     if (collection === this) return
-    clear()
+    if (this is MyObservableArrayList<T>) {
+        removeAllDoNotNotify(this)
+    } else {
+        clear()
+    }
     addAll(collection)
 }
 
